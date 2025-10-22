@@ -1,0 +1,533 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  overflow-x: hidden;
+}
+
+/* ======== NAVBAR ======== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.75);
+  padding: 15px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo {
+  font-size: 1.8em;
+  color: #00bfff;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px #00bfff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 60px;
+  transition: all 0.4s ease;
+}
+
+.nav-links a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05em;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #00bfff;
+  text-shadow: 0 0 10px #00bfff;
+}
+/* ============ Burger menyu umumiy ============ */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Animatsiya holati */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ============ Responsive holat ============ */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.4s ease;
+    z-index: 1000;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .nav-links a {
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: #1e90ff;
+  }
+}
+
+/* ======== BURGER MENU ======== */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: #00bfff;
+  cursor: pointer;
+  z-index: 101;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .nav-links.show {
+    top: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.8em;
+    color: #00bfff;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 25px #00bfff;
+  }
+}
+
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+  text-align: center;
+  font-size: 2.8em;
+  color: #f5f5f5;
+  text-shadow: 0 0 20px #00bfff;
+  margin: 70px 0 40px 0;
+  letter-spacing: 1px;
+}
+
+/* ===== MOVIES GRID (ROW STYLE) ===== */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 50px;
+  padding: 0 70px 100px 70px;
+  justify-items: center;
+}
+
+/* ===== MOVIE CARD ===== */
+.movie-card {
+  background: linear-gradient(145deg, #1a1a1a, #0e0e0e);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 250px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 25px #00bfff, 0 0 50px rgba(0, 191, 255, 0.3);
+}
+
+/* IMAGE STYLE */
+.movie-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  transition: filter 0.5s ease;
+}
+
+.movie-card:hover img {
+  filter: brightness(1.1) contrast(1.2);
+}
+
+/* MOVIE INFO */
+.movie-card h3 {
+  font-size: 1.2em;
+  color: #eaeaea;
+  text-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
+  margin: 15px 0 10px 0;
+}
+
+/* ===== BUTTON ===== */
+.movie-card button {
+  padding: 10px 25px;
+  background: transparent;
+  border: 2px solid #00bfff;
+  color: #00bfff;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.movie-card button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,191,255,0.4), transparent);
+  transition: left 0.6s;
+}
+
+.movie-card button:hover::before {
+  left: 100%;
+}
+
+.movie-card button:hover {
+  color: #fff;
+  background: #00bfff;
+  box-shadow: 0 0 20px #00bfff;
+  transform: scale(1.05);
+}
+/* ===== YANGILANGAN RESPONSIVE NAVBAR ===== */
+
+/* Planshetlar uchun (<= 992px) */
+@media (max-width: 992px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+  }
+
+  .logo {
+    font-size: 1.4em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 1em;
+  }
+}
+
+/* Telefonlar uchun (<= 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+  }
+
+  .logo {
+    font-size: 1.2em;
+    text-align: left;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-size: 0.95em;
+    padding: 5px;
+  }
+
+  .page-title {
+    font-size: 2em;
+    margin: 50px 0 30px;
+  }
+}
+
+/* Kichik telefonlar uchun (<= 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    font-size: 1.1em;
+  }
+
+  .nav-links {
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-size: 0.9em;
+  }
+}
+
+/* ===== BURGER MENU (RESPONSIVE NAVBAR) ===== */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: #00bfff;
+  cursor: pointer;
+  z-index: 15;
+}
+
+/* Telefon va planshet uchun menyuni yashiramiz */
+@media (max-width: 900px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    transition: right 0.4s ease;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links a {
+    font-size: 1.3em;
+  }
+}
+
+/* ===== RESPONSIVE BURGER MENU (CHIROYLI MARKAZDAGI) ===== */
+.menu-toggle {
+  display: none;
+  font-size: 32px;
+  color: #00bfff;
+  cursor: pointer;
+  z-index: 20;
+}
+
+/* Katta ekranlarda avvalgidek */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    transition: top 0.5s ease;
+  }
+
+  .nav-links.show {
+    top: 0;
+  }
+
+  .nav-links li {
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 1.8em;
+    color: #00bfff;
+    text-decoration: none;
+    text-shadow: 0 0 15px #00bfff;
+    transition: 0.3s ease;
+    position: relative;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 25px #00bfff;
+  }
+
+  /* Aktiv link tagida animatsion chiziq */
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: #00bfff;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 80%;
+  }
+}
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer .social-links {
+  margin-bottom: 10px;
+}
+
+.footer .social-links a {
+  color: #00bfff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #ffffff;
+}
+/* Burger menyu uchun */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Burger animatsiyasi */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Responsiv holatda menyu */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: -100%;
+    width: 200px;
+    background-color: #0a0a0a;
+    flex-direction: column;
+    align-items: center;
+    transition: right 0.4s ease;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+}
+
+
+
